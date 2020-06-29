@@ -1,0 +1,42 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        title Quiz
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+    style
+        include stylesheets/main.css
+        //link(rel='stylesheet', type='text/css', media='screen', href='stylesheets/main.css')
+    body
+        h1 Quiz on Important Facts
+        div
+            form#stats_form(action='/stats' method="get")
+                label(for='solved_dropdown') Choose filled quiz
+                select#solved_dropdown(name='solved_dropdown')
+                    each solvedQuiz in solvedQuizlist
+                        option(value=solvedQuiz.id) #{solvedQuiz.name}
+            br
+
+            form#choose_quiz_form(action='/questions' method="get")
+                label(for='available_dropdown') Choose new quiz
+                select#available_dropdown(name='available_dropdown')
+                    each availableQuiz in availableQuizlist
+                        option(value=availableQuiz.id) #{availableQuiz.name}
+
+        section#start-container.container
+            //a(href='questions/'+ available_dropdown)
+            button#start(type='submit', form='choose_quiz_form', value='Submit') START
+            form#logout_form(action='/logout', method='POST')
+                input(type="hidden", name="_csrf", value=csrfToken)
+                button#logout(type="submit", value="Submit") LOGOUT
+            a(href='/change')
+                button#change_password CHANGE
+                button#stats(type='submit', form='stats_form', value='Submit') SHOW STATS
+        //section#stats-container.container
+        //    table#scores-table.table
+        //        tbody
+        //            tr
+        //                th RESULT
+        //                th PENALTY
+        script(src='../public/scripts/quiz.js' defer)

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Quiz</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='stylesheets/main.css'>
+</head>
+
+<body>
+<h1 id="introduction"></h1>
+<section id="login-view">
+  <section class="container" id="change-password-container">
+    <form action="/api/users/change" method="POST" id="change-password-form">
+    <label for="login" id="old_password"></label>
+    <p>Old password</p>
+    <input type="text" name="login" id="login"><br>
+    <label for="new-password"></label>
+    <p>New password</p>
+    <input type="text" name="password" id="new-password"><br>
+    <label for="repeat-new-password"></label>
+    <p>Repeat new password password</p>
+    <input type="text" name="password" id="repeat-new-password"><br>
+    </form>
+  </section>
+  <button type=submit form="change-password-form" id="change-password">Login</button>
+  <form action="/api/users/logout" method="GET" id="logout-form">
+    <button type=submit id="home-button">Home</button>
+  </form>
+
+</section>
+
+<script src="../public/scripts/main.js"></script>
+</body>
+
+</html>

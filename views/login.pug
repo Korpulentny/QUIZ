@@ -1,0 +1,26 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        title Login
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+    style
+        include stylesheets/main.css
+        //link(rel='stylesheet', type='text/css', media='screen', href='stylesheets/main.css')
+
+    body
+        h1#introduction
+        section#login-view
+            section#login-container.container
+                form#login-form(action='/login', method='POST')
+                    label#login-label(for='login')
+                    p Login
+                    input#login(type='text', name='login')
+                    input(type="hidden", name="_csrf", value=csrfToken)
+                    label#password-label(for='password')
+                    p Password
+                    input#password(type='password', name='password')
+            button#login-button(type='submit', form='login-form', value='Submit') Login
+            //- form#logout-form(action='logout', method='GET')
+            //-     button#home-button(type='submit') Home

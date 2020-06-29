@@ -1,0 +1,42 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='csrf-token' content=csrfToken)
+        title Quiz
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+    style
+        include stylesheets/main.css
+        //link(rel='stylesheet', type='text/css', media='screen', href='stylesheets/main.css')
+
+    body
+
+        h1 Question statistics
+        table#ScoreTable(style='width:100%')
+            tr
+                th URANSW
+                th CORRANSW
+                th ISCORR
+                th URTIME
+                th AVGTIME
+            each questionScore in questionScores
+                tr
+                    td=questionScore[0]
+                    td=questionScore[3]
+                    td=questionScore[1]
+                    td=Math.round(((questionScore[2]/1000)+Number.EPSILON)*100)/100
+                    td=Math.round((questionScore[4]+Number.EPSILON)*100)/100
+
+        h1 Top 5 scores
+        table#Top5Table(style='width:100%')
+            tr
+                th USER
+                th RES
+            each topResult in topResults
+                tr
+                    td=topResult.login
+                    td=topResult.result*questionsNumber+'/'+questionsNumber
+
+        a(href='/')
+            button#home-button Home

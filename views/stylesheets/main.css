@@ -1,0 +1,62 @@
+h1 {
+  font-weight: 400;
+  padding: 9px;
+  font-size: 20px;
+  background-color: #444;
+  color: #fff;
+}
+
+button{
+  font-family: sans-serif;
+  font-size: 21px;
+  background-color: #278db6;
+  color: #fff;
+  border-radius: 2px;
+  padding: 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+body {
+  font-size: 20px;
+  color: #333;
+  font-family: sans-serif;
+  text-align: center;
+  background-color: #eeebeb;
+  font-weight: 400;
+}
+
+button:hover {
+  background-color: #266984;
+}
+
+.table{
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+#start {
+  margin-top: 20px;
+}
+
+#save-raw{
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+#save-scores{
+  margin-top: 20px;
+}
+
+td tr {
+  padding: 5px;
+}
+

@@ -1,0 +1,38 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='csrf-token' content=csrfToken)
+        title Quiz
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+    style
+        include stylesheets/main.css
+        //link(rel='stylesheet', type='text/css', media='screen', href='stylesheets/main.css')
+
+    body
+        h1#introduction
+        section#quiz-view
+            section#quiz-container.container
+                label#question(for='answer')
+                input#answer(type='text', name='answer')
+                p#timer Timer: 0
+                p#question-penalty Penalty: 0
+            button#previous Previous Question
+            button#next Next Question
+            button#submit Submit Quiz
+            a(href='/')
+                button#cancel Cancel
+        section#results-view
+            section#results-container.container
+                p#result-number
+                p#result-time
+                table#results-table.table
+                    tbody
+                        tr
+                            th NR
+                            th ANSWER
+                            th PENALTY
+            button#save-scores Save+Score
+
+        script(data-content=myQuestions src='../public/scripts/main.js' defer)

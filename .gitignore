@@ -1,0 +1,8 @@
+.idea*
+.idea/
+*.db
+node_modules/
+app.js
+utils/*.js
+sessions
+*.js

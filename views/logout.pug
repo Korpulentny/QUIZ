@@ -1,0 +1,18 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        title Logout
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+    style
+        include stylesheets/main.css
+     //link(rel='stylesheet', type='text/css', media='screen', href='stylesheets/main.css')
+
+    body
+        h1#introduction
+        section#logout-view
+            form#logout-form(action='/logout', method='GET')
+                button#logout-button(type='submit') Logout
+            //form#logout-form(action='/api/users/logout', method='GET')
+            //    button#home-button(type='submit') Home

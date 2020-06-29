@@ -1,0 +1,28 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        title Quiz
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+    style
+        include stylesheets/main.css
+        //link(rel='stylesheet', type='text/css', media='screen', href='stylesheets/main.css')
+
+    body
+        h1#introduction
+        section#login-view
+            section#change-password-container.container
+                form#change-password-form(action='/change', method='POST')
+                    label(for='new_password')
+                    p New password
+                    input#new_password(type='text', name='new_password')
+                    br
+                    input(type="hidden", name="_csrf", value=csrfToken)
+                    label(for='repeat_new_password')
+                    p Repeat new password
+                    input#repeat_new_password(type='text', name='repeat_new_password')
+                    br
+            button#change-password(type='submit', form='change-password-form') Submit
+            a(href='/')
+                button#home-button Home
