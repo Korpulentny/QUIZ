@@ -21,10 +21,10 @@ const sessionStore: MemoryStore = new MemoryStore();
 
 const logoutUser = (req: Request, res: Response, next: NextFunction) => {
   sessionStore.all((err: any, sessions: any) => {
-    const deletionPromises = Object.entries(sessions)
+    const toDelete = Object.entries(sessions)
     .filter(([k, v]: [any, any]) => v.login === req.session.login)
     .map(([k, v]) => (promisify(sessionStore.destroy.bind(sessionStore))(k)));
-    (Promise.all(deletionPromises)).then(() => {
+    (Promise.all(toDelete)).then(() => {
       return res.redirect(MOVED_PERMANENTLY, '/login');
     }).catch(() => {
       return next(createError(400));
@@ -177,6 +177,12 @@ dbStart().then(() => {
     }
 
   });
+  app.get('/quizError', csrfProtection, redirectLogin, (req: Request, res: Response) => {
+    res.render('Error',{
+      title: "Error",
+      csrfToken: req.csrfToken()
+    })
+  });
 
   app.get('/stats/', csrfProtection, redirectLogin, async (req: Request, res: Response) => {
 
@@ -224,8 +230,17 @@ dbStart().then(() => {
     });
     score /= questions.length;
     let resultString = JSON.stringify(result);
-    await dbRunWrapper(res.locals.db, 'INSERT INTO scores (usr_login, result, content, quizId) VALUES (?, ?,?,?);', [req.session!.login, score, resultString, req.params.quizId]);
-    res.redirect("/");
+
+    let userScore: any = await dbGetWrapper(res.locals.db, 'SELECT * FROM scores WHERE quizId=? AND usr_login = ?;', [req.params.quizId, req.session!.login]);
+    console.log(userScore);
+    if (userScore) {
+      console.log("niedodaje");
+      res.redirect('/quizError');
+    } else {
+      console.log("dodaje");
+      await dbRunWrapper(res.locals.db, 'INSERT INTO scores (usr_login, result, content, quizId) VALUES (?, ?,?,?);', [req.session!.login, score, resultString, req.params.quizId]);
+      res.redirect("/");
+    }
   });
 
 
