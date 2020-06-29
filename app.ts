@@ -25,10 +25,8 @@ const logoutUser = (req: Request, res: Response, next: NextFunction) => {
     .filter(([k, v]: [any, any]) => v.login === req.session.login)
     .map(([k, v]) => (promisify(sessionStore.destroy.bind(sessionStore))(k)));
     (Promise.all(deletionPromises)).then(() => {
-      console.log("TSTS");
       return res.redirect(MOVED_PERMANENTLY, '/login');
     }).catch(() => {
-      console.log("error");
       return next(createError(400));
     });
   })
@@ -137,24 +135,10 @@ dbStart().then(() => {
   });
 
   app.post('/logout', csrfProtection, redirectLogin, async (req: Request, res: Response, next: NextFunction) => {
-    // console.log("COMPLETE");
-    // logoutUser(req, res, next);
     req.session.destroy(() => {
       return res.redirect(MOVED_PERMANENTLY, '/login');
     })
   });
-
-  // app.get('/logout', csrfProtection, redirectLogin, (req: Request, res: Response) => {
-  //
-  //   console.log("TSTS loguts 3");
-  //   if (req.session !== undefined) {
-  //     console.log("sesja jes");
-  //     req.session.destroy(() => {
-  //       console.log("destroy");
-  //       return res.redirect(MOVED_PERMANENTLY, '/login');
-  //     })
-  //   }
-  // });
 
   app.get('/quiz', csrfProtection, redirectLogin, async (req: Request, res: Response) => {
     let quizesWithScores: any = await dbAllWrapper(res.locals.db, 'SELECT quizzes.id, quizzes.name  FROM quizzes LEFT JOIN scores ON quizzes.id = scores.quizId WHERE scores.usr_login = ?', [req.session!.login]);
@@ -215,11 +199,6 @@ dbStart().then(() => {
       record.push(timeScores[index]);
       return record;
     })
-
-    console.log(top5);
-    console.log(resultArray);
-    console.log(timeScores);
-
     if (result) {
       res.render('stats', {
         title: "stats",
@@ -246,9 +225,7 @@ dbStart().then(() => {
     score /= questions.length;
     let resultString = JSON.stringify(result);
     await dbRunWrapper(res.locals.db, 'INSERT INTO scores (usr_login, result, content, quizId) VALUES (?, ?,?,?);', [req.session!.login, score, resultString, req.params.quizId]);
-    // let answersEntry: any = await dbGetWrapper(res.locals.db, 'SELECT * FROM scores WHERE usr_login=? AND quizId = ?', [req.session!.login, req.params.quizId]);
     res.redirect("/");
-    // console.log(answersEntry);
   });
 
 

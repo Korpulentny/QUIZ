@@ -1,6 +1,6 @@
 let quizView = document.getElementById("quiz-view") as HTMLParagraphElement;
-let resultsView = document.getElementById("results-view") as HTMLParagraphElement;
-let resultsTableContainer = document.getElementById("results-table") as HTMLTableElement;
+// let resultsView = document.getElementById("results-view") as HTMLParagraphElement;
+// let resultsTableContainer = document.getElementById("results-table") as HTMLTableElement;
 let submitButton = document.getElementById("submit") as HTMLButtonElement;
 let previousButton = document.getElementById("previous") as HTMLButtonElement;
 let nextButton = document.getElementById("next") as HTMLButtonElement;
@@ -150,24 +150,12 @@ let questionTimer: number = 0;
       answer[1] /= timeSum;
     });
     let resultJSON = JSON.stringify({answers: Object.values(currentQuiz.answers)});
-    console.log(resultJSON);
-    console.log(currentQuiz);
-    console.log(token);
-
     postQuizResults(currentQuiz.id, resultJSON, token).then(() => {
       window.location.replace("quiz");
     });
   }
 
-  // function saveRaw() {
-  //   let resultJson = JSON.stringify({result: currentQuiz.result, time: currentQuiz.time});
-  //   console.log(resultJson);
-  //   saveToLocalStorage(resultJson);
-  //   window.location.replace("quiz");
-  // }
-
   function postQuizResults(quizId: string, quizResults: string, csrfToken: string): Promise<any> {
-    console.log(quizResults);
     return fetch(`http://localhost:3000/save/${quizId}`, {
       credentials: 'same-origin',
       method: 'POST',
@@ -195,24 +183,24 @@ let questionTimer: number = 0;
       currentQuiz.answers[i.toString()] = new Array<String>(2);
       currentQuiz.answers[i.toString()][0] = answers[i];
       currentQuiz.answers[i.toString()][1] = timers[i];
-      let newRow = resultsTableContainer.insertRow();
-      let currCell = newRow.insertCell(0);
-      currCell.innerHTML = i.toString();
-      currCell = newRow.insertCell(1);
+      // let newRow = resultsTableContainer.insertRow();
+      // let currCell = newRow.insertCell(0);
+      // currCell.innerHTML = i.toString();
+      // currCell = newRow.insertCell(1);
       if (answers[i] == currentQuiz.questions[i.toString()][1]) {
         correctAnswers++;
-        currCell.innerHTML = "OK";
-        currCell.style.color = "green";
+        // currCell.innerHTML = "OK";
+        // currCell.style.color = "green";
         currentQuiz.answers[i].push("OK")
       } else {
         currentQuiz.answers[i][1] += currentQuiz.questions[i.toString()][2];
         currentQuiz.time += currentQuiz.questions[i.toString()][2];
-        currCell.innerHTML = "WA";
-        currCell.style.color = "red";
+        // currCell.innerHTML = "WA";
+        // currCell.style.color = "red";
         currentQuiz.answers[i.toString()].push("WA")
       }
-      currCell = newRow.insertCell(2);
-      currCell.innerHTML = currentQuiz.answers[i.toString()][1];
+      // currCell = newRow.insertCell(2);
+      // currCell.innerHTML = currentQuiz.answers[i.toString()][1];
 
     }
     currentQuiz.result = correctAnswers.toString() + "/" + currentQuiz.size.toString();
@@ -223,7 +211,7 @@ let questionTimer: number = 0;
     saveWithScores();
   }
 
-  resultsView.style.visibility = "hidden";
+  // resultsView.style.visibility = "hidden";
   fillArray(answers, "", currentQuiz.size);
   fillArray(timers, 0, currentQuiz.size);
   currentQuiz.answers = new Map<String, String[]>();

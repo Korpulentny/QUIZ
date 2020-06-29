@@ -1,7 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3f8d504a-854e-4eb7-a53b-95ef2e11e06b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/scripts/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/public/scripts/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/questions.pug" beforeDir="false" afterPath="$PROJECT_DIR$/views/questions.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/quiz.pug" beforeDir="false" afterPath="$PROJECT_DIR$/views/quiz.pug" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1dyOVPeQDybPQ2qhJsnibrVFDmD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3f8d504a-854e-4eb7-a53b-95ef2e11e06b" name="Default Changelist" comment="" />
+      <created>1593393889294</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1593393889294</updated>
+      <workItem from="1593393890653" duration="783000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/public/scripts/main.js" />
+        <option value="$PROJECT_DIR$/public/scripts/quiz.js" />
+        <option value="$PROJECT_DIR$/tests/test.js" />
+        <option value="$PROJECT_DIR$/utils/dbWrapper.js" />
+        <option value="$PROJECT_DIR$/utils/userUtils.js" />
+        <option value="$PROJECT_DIR$/utils/hashUtil.js" />
+      </list>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="684" y="291" width="618" height="594" key="find.popup" timestamp="1593394629996">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="684" y="291" width="618" height="594" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1593394629996" />
   </component>
 </project>
